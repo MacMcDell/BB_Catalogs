@@ -1,0 +1,25 @@
+﻿@model mdl.Catalog
+
+
+<h2>Add Sub-Catalog</h2>
+<div>
+    Currently adding a subcatalog to:
+    <h4>
+        @Model.Name
+    </h4>
+</div>
+
+@using (Html.BeginForm("AddSubCatalog", "Home", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-2 text-right">
+            <label for="Name">Catalog Name</label>
+        </div>
+        <div class="col-md-2">
+            @Html.TextBoxFor(x => x.Name, new {Value="" })
+        </div>
+    </div>
+    @Html.HiddenFor(x=> x.Id)
+    <input type="submit" class="btn btn-primary" name="action" value="Insert" />
+
+}

@@ -1,0 +1,49 @@
+﻿@model mdl.Product
+@{
+    ViewBag.Title = "Insert";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="row col-md-6">
+    @using (Html.BeginForm("EditProduct", "Home", FormMethod.Post))
+    {
+       
+        <div class="row">
+            <div class="col-md-4 text-right">
+                @Html.LabelFor(x => x.Name)
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(x => x.Name)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 text-right">
+                @Html.LabelFor(x => x.Price)
+            </div>
+            <div class="col-md-4 text-right">
+                @Html.TextBoxFor(x => x.Price)
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-md-4 text-right">
+                    @Html.LabelFor(x => x.Description)
+                </div>
+                <div class="col-md-4 text-right">
+                    @Html.TextBoxFor(x => x.Description)
+                </div>
+            </div>
+
+            <input type="submit" class="btn btn-primary" name="action" value="Update" />
+
+            @Html.HiddenFor(x => x.Id)
+
+
+
+    }
+    @using (Html.BeginForm("DeleteProduct", "Home", FormMethod.Post))
+    {
+        @Html.HiddenFor(h => h.Id)
+        <input type="submit" class="btn btn-danger" name="action" value="Delete" />
+    }
+</div>
+

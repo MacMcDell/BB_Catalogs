@@ -1,0 +1,86 @@
+﻿@using mdl
+@model WebApplication1.Models.HomeModel
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+
+    <div class="col-xs-6">
+
+
+        <div class="col-sm-12">
+
+         
+                <a href='@Url.Action("InsertCatalog", "home")' class="btn btn-info btn-sm">Add Root Catalog item</a>
+
+         
+
+        </div>
+
+        @DisplayTree(Model.catalogs.Where(e => e.ParentId == null).OrderBy(e => e.ParentId))
+
+
+
+        @helper DisplayTree(IEnumerable<Catalog> elements)
+        {
+        <ul style="list-style-type: none;">
+            @foreach (var element in elements)
+            {
+                <li>
+                    @if (element.ParentId == null)
+                    {
+                        <h2>
+                            @element.Name
+                        <a href='@Url.Action("AddSubCatalog", "home", new { id = element.Id })' class="btn btn-info btn-sm">Add Sub-Catalog</a>
+                        <a href='@Url.Action("EditCatalog", "home", new { id = element.Id })' class="btn btn-info btn-sm">Modify</a>
+                    </h2>
+                    }
+
+                    @if (element.ParentId != null)
+                    {
+                        <h4>@element.Name 
+                    <a href='@Url.Action("insert", "home", new { id = element.Id })' class="btn btn-info btn-sm">Insert Product</a>
+                            <a href='@Url.Action("AddSubCatalog", "home", new { id = element.Id })' class="btn btn-info btn-sm">Add Sub-Catalog</a>
+                            <a href='@Url.Action("EditCatalog", "home", new { id = element.Id })' class="btn btn-info btn-sm">Modify</a>
+                    </h4>
+
+                        if (element.Products != null)
+                        {
+                            <table class="table table-striped table-hover">
+                                <tr>
+                                    <th> </th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    @foreach (var p in element.Products)
+                                    {
+                                    <tr>
+                                        <td>@Html.ActionLink("edit", "edit", new { id = p.Id }, new { @class = "btn btn-primary btn-xs" })</td>
+                                        <td>@p.Name</td>
+                                        <td>@p.Price.Value.ToString("C2")</td>
+
+                                    </tr>
+                                    }
+                                    </tr>
+                                </table>
+                        }
+                    }
+
+                    @{
+                        var children = Model.catalogs.Where(e => e.ParentId == element.Id).OrderBy(e => e.Id).ToList(); ;
+                        if (children.Count() > 0)
+                        {
+                            @DisplayTree(children)
+                        }
+                    }
+
+                </li>
+                        }
+        </ul>
+}
+
+
+    </div>
+</div>

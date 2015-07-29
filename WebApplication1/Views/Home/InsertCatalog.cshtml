@@ -1,0 +1,41 @@
+﻿@model mdl.Catalog
+@{
+
+}
+
+<h2>Insert Root Catalog Item</h2>
+
+@using (Html.BeginForm("InsertCatalog", "Home", FormMethod.Post))
+{
+    <div>
+        this will create a root node in the catalog tree:)
+    </div>
+   
+
+    <div class="row">
+        <div class="col-md-2 text-right">
+            <label for="Name">Catalog Name</label>
+        </div>
+        <div class="col-md-2">
+            @Html.TextBoxFor(x => x.Name)
+        </div>
+    </div>
+      
+
+            <input type="submit" class="btn btn-primary" name="action" value="Insert" />
+
+           
+
+
+
+  
+}
+
+
+
+@section scripts
+{
+    <script src="~/js/custom.js"></script>
+}
+
+
