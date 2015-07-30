@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mdl", "mdl\mdl.csproj", "{D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BB_CatalogManager", "WebApplication1\BB_CatalogManager.csproj", "{A3F59186-8FC4-4342-9AD2-07A683D530A4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Scripts", "SQL Scripts", "{BD493EB1-31C4-4606-81C6-E111327F5A2E}"
+	ProjectSection(SolutionItems) = preProject
+		DBSetup.sql = DBSetup.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
