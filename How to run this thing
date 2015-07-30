@@ -1,4 +1,8 @@
 # BB_Catalogs
-Make sure to run the generateDB.SQL file first before compiling...otherwise bad things may happend.
-You will then have to update your web.config in the BB_CatalogManager and app.config in the mdl project. 
+Make sure to run the DBSetup.SQL file first before compiling...otherwise bad things may happend.
+You will then have to update your web.config in the BB_CatalogManager and app.config in the mdl project.
 This is required. Entity Framework is having a tough time with the circular reference to catalog parentId. 
+I have tested it roughly 5 times and it works each time. 
+If you compile the app before running the SQL it will autogenerate the tables...somewhere on your machine.
+There is an assumption you have .\sqlExpress installed. 
+
