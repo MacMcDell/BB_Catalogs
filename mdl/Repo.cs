@@ -106,7 +106,7 @@ namespace mdl
         {
             Dictionary<int, Catalog> dict = new Dictionary<int, Catalog>();
 
-            var catalogItem = ctx.Catalogs.OrderBy(x => x.ParentId);
+            var catalogItem = ctx.Catalogs.Include("Products").OrderBy(x => x.ParentId);
 
             foreach (var node in catalogItem)
             {
@@ -176,5 +176,11 @@ namespace mdl
             return ctx.Catalogs.Where(x => x.Id == id.Value).Single();
 
         }
+
+        public IQueryable<Product> GetProducts()
+        {
+            return ctx.Products;
+        }
+
     }
 }

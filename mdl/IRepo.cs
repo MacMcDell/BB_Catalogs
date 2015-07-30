@@ -14,7 +14,8 @@ namespace mdl
         IQueryable<Catalog> GetCatalogs();
         IQueryable<Catalog> GetCatalogByParent(int parentId);
 
-        IQueryable<Catalog> GetCatalogAndProducts(); 
+        IQueryable<Catalog> GetCatalogAndProducts();
+        IQueryable<Product> GetProducts();
         bool Save();
         Product GetProdutById(int id);
         bool UpdateProduct(Product product);

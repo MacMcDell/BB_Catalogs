@@ -1,0 +1,28 @@
+﻿
+    <script type="text/ng-template" id="categoryTree">
+        {{ category.name }}
+        
+        <table class="table table-striped" >
+            <tr ng-repeat="product in category.products">
+          <td><a class="btn btn-primary" ng-click="updateproduct(product)">Update</a></td>
+                  <td>{{product.name}}</td>
+                <td>{{product.price | currency}}</td>
+                <td>{{product.description}} </td>
+                
+            </tr>
+        </table>
+        <ul ng-if="category.childCatalog" style="list-style-type:none">
+            <li ng-repeat="category in category.childCatalog" ng-include="'categoryTree'">
+            </li>
+        </ul>
+    </script>
+    <ul style="list-style-type:none">
+        <li ng-repeat="category in categories.products" ng-include="'categoryTree'">
+        
+
+        </li>
+    </ul>
+
+
+
+

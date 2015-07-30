@@ -1,0 +1,38 @@
+﻿<form name="updateForm" novalidate data-ng-submit="updateproduct()">
+    <div class="modal-header">Updating Product</div>
+    <div class="modal-body">
+        productID = {{product.id}}
+        CatalogID = {{product.catalogId}}
+        ProductID = {{product.id}}
+        <div class="row">
+            <div class="col-md-2">
+                <label for="title">Product</label>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="title" data-ng-model="product.name" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><label for="price">Price</label></div>
+            <div class="col-md-2"><input type="text" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01" name="price" data-ng-model="product.price" required  />
+               
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><label for="description">Description</label></div>
+            <div class="col-md-2"><input type="text" name="description" data-ng-model="product.description" required data-ng-minlength="5" />            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <span class="error" data-ng-show="updateForm.price.$error.required">must be decimal</span>
+                <span class="error" data-ng-show="updateForm.description.$error.required">*</span>
+                <span class="error" data-ng-show="updateForm.description.$error.minlength">Minimum 5 Characters</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        
+        <input type="submit" class="btn btn-primary" value="Save" data-ng-disabled="updateForm.$invalid" />
+    </div>
+</form>
